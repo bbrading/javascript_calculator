@@ -1,0 +1,22 @@
+#body {
+  background-color: gray;
+  padding: 100px;
+}
+
+#calculator {
+  margin: auto;
+  background-color: black;
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  padding: 10px
+}
+
+.button{
+  padding: 0px;
+}
+
+#screen{
+  color: white;
+  padding: 20px;
+}

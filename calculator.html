@@ -1,94 +1,89 @@
 
 <html>
   <head>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <link rel = "stylesheet" type="text/css" href="calculator.css"/>
     <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel = "stylesheet" type="text/css" href="./calculator.css"/>
   </head>
   <body id = "body">
     <div class = "container-fluid">
         <div id ="calculator">
           <div class="row">
-            <div class = "col md=12" id = "screen">
+            <div class = "col-md-12" id = "screen">
             </div>
           </div>
           <div class="row">
-            <div class = "col md-4">
+            <div class = "col-md-4">
             </div>
-            <div class="col md-1 button">
+            <div class="col-md-1 button">
               <button type = "button"> / </button>
             </div>
-            <div class="col md-1 button nine">
+            <div id ="9" class="col-md-1 button">
               <button type = "button" value = "9"> 9 </button>
             </div>
-            <div id="8" class="col md-1 button eight">
+            <div id="8" class="col-md-1 button">
               <button type = "button" value ="8"> 8 </button>
             </div>
-            <div class="col md-1 button seven">
+            <div id ="7" class="col-md-1 button">
               <button type = "button" value ="7"> 7 </button>
             </div>
-            <div class = "col md-4 button">
+            <div class = "col-md-4 button">
             </div>
           </div>
             <div class="row">
-            <div class ="col md-4">
+            <div class ="col-md-4">
             </div>
-            <div class="col md-1 button">
+            <div class="col-md-1 button">
               <button type = "button"> x </button>
             </div>
-            <div class="col md-1 button">
+            <div id ="6" class="col-md-1 button">
               <button type = "button" value = "6"> 6 </button>
             </div>
-            <div class="col md-1 button">
+            <div id ="5" class="col-md-1 button">
               <button type = "button" value = "5"> 5 </button>
             </div>
-            <div class="col md-1 button">
+            <div id ="4" class="col-md-1 button">
               <button type = "button" value ="4"> 4 </button>
             </div>
-            <div class = "col md-4">
+            <div class = "col-md-4">
             </div>
           </div>
           <div class="row">
-            <div class = "col md-4">
+            <div class = "col-md-4">
             </div>
-            <div class="col md-1 button">
+            <div class="col-md-1 button">
               <button type = "button"> - </button>
             </div>
-            <div class="col md-1 button">
+            <div id ="3" class="col-md-1 button">
               <button type = "button" value = "3"> 3 </button>
             </div>
-            <div class="col md-1 button">
+            <div id ="2" class="col-md-1 button">
               <button type = "button" value = "2"> 2 </button>
             </div>
-            <div class="col md-1 button">
+            <div id ="1" class="col-md-1 button">
               <button type = "button" value = "1"> 1 </button>
             </div>
-            <div class = "col md-4">
+            <div class = "col-md-4">
             </div>
           </div>
           <div class="row">
-            <div class = "col md-4">
+            <div class = "col-md-4">
             </div>
-            <div class="col md-1 button">
+            <div id = "add" class="col-md-1 button">
               <button type = "button"> + </button>
             </div>
-            <div class="col md-1 button">
+            <div class="col-md-1 button">
               <button type = "button"> = </button>
             </div>
-            <div class="col md-1 button">
+            <div class="col-md-1 button">
               <button type = "button"> . </button>
             </div>
-            <div class="col md-1 button">
+            <div id ="0" class="col-md-1 button">
               <button type = "button" value = "0"> 0 </button>
             </div>
-            <div class = "col md-4">
+            <div class = "col-md-4">
             </div>
           </div>
 
@@ -97,7 +92,10 @@
 
         <div id = "display">
         </div>
-     <script src="calculator.js"> </script>
+
     </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="calculator.js"> </script>
   </body>
 </html>

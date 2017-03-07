@@ -1,63 +1,76 @@
 $(document).ready(function(){
   var firstNum = "";
-  var secondNum = "0";
+  var nextNum = "";
   var currentNum = "";
-  var answer = "";
+  var currentOperator = "";
 
   $(".button").on("click", clickEvent)
-  $("#add").on("click", add)
-  $("")
-  $("#equals").on("click", displayAnswer)
+  $("#add").on("click", addOperator)
+  $("#subtract").on("click", subtractOperator)
+  $("#equals").on("click", calculateAnswer)
 
   function clickEvent(e){
-    if (firstNum === ""){
-      currentNum += e.currentTarget.id
-      $("#screen").html(currentNum)
+    if (currentNum === ""){
+      firstNum += e.currentTarget.id
+      $("#screen").html(firstNum)
     }
     else {
-      secondNum += e.currentTarget.id
-      $("#screen").html(secondNum)
+      nextNum += e.currentTarget.id
+      $("#screen").html(nextNum)
+    }
+  }
+
+  function addOperator(e){
+    if (currentOperator !== ""){
+      calculateAnswer()
+    }
+    currentOperator = add
+    if (currentNum == ""){
+      currentNum = firstNum
+    }
+  }
+
+  function subtractOperator(e){
+    if (currentOperator !== ""){
+      calculateAnswer()
+    }
+    currentOperator = subtract
+    if (currentNum == ""){
+      currentNum = firstNum
     }
   }
 
   function add(){
-    if(firstNum === ""){
-      firstNum = parseInt(currentNum, 10);
-      answer = (parseInt(firstNum, 10) + parseInt(secondNum, 10)) || parseInt(firstNum, 10)
-      $("#screen").html(answer)
-      firstNum = answer
-      secondNum = 0;
-    }
-    else{
-    answer = (parseInt(firstNum, 10) + parseInt(secondNum, 10)) || parseInt(firstNum, 10)
-    $("#screen").html(answer)
-    firstNum = answer
-    secondNum = 0;
-    }
+    currentNum = parseInt(currentNum, 10) + parseInt(nextNum, 10)
+    nextNum = ""
+    return currentNum
   }
 
   function subtract(){
-    if(firstNum === ""){
-      firstNum = parseInt(currentNum, 10);
-      answer = (parseInt(firstNum, 10) - parseInt(secondNum, 10)) || parseInt(firstNum, 10)
-      $("#screen").html(answer)
-      firstNum = answer
-      secondNum = 0;
-    }
-    else{
-    answer = (parseInt(firstNum, 10) - parseInt(secondNum, 10)) || parseInt(firstNum, 10)
-    $("#screen").html(answer)
-    firstNum = answer
-    secondNum = 0;
-    }
+    currentNum = parseInt(currentNum, 10) - parseInt(nextNum, 10)
+    nextNum = ""
+    return currentNum
   }
 
-  function displayAnswer(){
+  function calculateAnswer(){
+    var answer = currentOperator()
     $("#screen").html(answer)
   }
+
 
   function clear(){
 
   }
 
 })
+
+
+// -- in test file --
+// var assert = require('assert');
+// describe('add', function() {
+//   it('should add the currentNum and nextNum', function() {
+//     var currentNum = 19
+//     var nextNum = 3
+//     assert.equal(22, add());
+//   });
+// });

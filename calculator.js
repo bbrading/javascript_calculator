@@ -7,7 +7,10 @@ $(document).ready(function(){
   $(".button").on("click", clickEvent)
   $("#add").on("click", addOperator)
   $("#subtract").on("click", subtractOperator)
+  $("#multiply").on("click", multiplyOperator)
+  $("#divide").on("click", divideOperator)
   $("#equals").on("click", calculateAnswer)
+  $("#clear").on("click", clear)
 
   function clickEvent(e){
     if (currentNum === ""){
@@ -40,14 +43,46 @@ $(document).ready(function(){
     }
   }
 
+  function multiplyOperator(e){
+    if (currentOperator !== ""){
+      calculateAnswer()
+    }
+    currentOperator = multiply
+    if (currentNum == ""){
+      currentNum = firstNum
+    }
+  }
+
+  function divideOperator(e){
+    if (currentOperator !== ""){
+      calculateAnswer()
+    }
+    currentOperator = divide
+    if (currentNum == ""){
+      currentNum = firstNum
+    }
+  }
+
   function add(){
-    currentNum = parseInt(currentNum, 10) + parseInt(nextNum, 10)
+    currentNum = parseFloat(currentNum, 10) + parseFloat(nextNum, 10)
     nextNum = ""
     return currentNum
   }
 
   function subtract(){
-    currentNum = parseInt(currentNum, 10) - parseInt(nextNum, 10)
+    currentNum = parseFloat(currentNum, 10) - parseFloat(nextNum, 10)
+    nextNum = ""
+    return currentNum
+  }
+
+  function multiply(){
+    currentNum = parseFloat(currentNum, 10) * parseFloat(nextNum, 10)
+    nextNum = ""
+    return currentNum
+  }
+
+  function divide(){
+    currentNum = parseFloat(currentNum, 10) / parseFloat(nextNum, 10)
     nextNum = ""
     return currentNum
   }
@@ -59,18 +94,11 @@ $(document).ready(function(){
 
 
   function clear(){
-
+    firstNum = "";
+    nextNum = "";
+    currentNum = "";
+    currentOperator = "";
+    $("#screen").html("0")
   }
 
 })
-
-
-// -- in test file --
-// var assert = require('assert');
-// describe('add', function() {
-//   it('should add the currentNum and nextNum', function() {
-//     var currentNum = 19
-//     var nextNum = 3
-//     assert.equal(22, add());
-//   });
-// });

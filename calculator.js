@@ -1,104 +1,78 @@
-$(document).ready(function(){
-  var firstNum = "";
-  var nextNum = "";
-  var currentNum = "";
-  var currentOperator = "";
+var calculator = {
 
-  $(".button").on("click", clickEvent)
-  $("#add").on("click", addOperator)
-  $("#subtract").on("click", subtractOperator)
-  $("#multiply").on("click", multiplyOperator)
-  $("#divide").on("click", divideOperator)
-  $("#equals").on("click", calculateAnswer)
-  $("#clear").on("click", clear)
+  firstNum: "",
+  nextNum: "",
+  currentNum: "",
+  currentOperator: "",
 
-  function clickEvent(e){
-    if (currentNum === ""){
-      firstNum += e.currentTarget.id
-      $("#screen").html(firstNum)
-    }
-    else {
-      nextNum += e.currentTarget.id
-      $("#screen").html(nextNum)
-    }
-  }
+  calculateAnswer: function(){
+  var answer = this.currentOperator()
+  $("#screen").html(answer)
+  },
 
-  function addOperator(e){
-    if (currentOperator !== ""){
-      calculateAnswer()
+  addOperator: function(){
+    if (this.currentOperator !== ""){
+      this.calculateAnswer.bind(calculator)();
     }
-    currentOperator = add
-    if (currentNum == ""){
+    this.currentOperator = this.add.bind(calculator);
+    if (this.currentNum == ""){
+      this.currentNum = this.firstNum
+    }
+  },
+
+  subtractOperator: function(e){
+    if (this.currentOperator !== ""){
+      this.calculateAnswer()
+    }
+    this.currentOperator = this.subtract
+    if (this.currentNum == ""){
       currentNum = firstNum
     }
-  }
+  },
 
-  function subtractOperator(e){
-    if (currentOperator !== ""){
-      calculateAnswer()
+  multiplyOperator: function(e){
+    if (this.currentOperator !== ""){
+      this.calculateAnswer()
     }
-    currentOperator = subtract
+    this.currentOperator = this.multiply
     if (currentNum == ""){
-      currentNum = firstNum
+      this.currentNum = firstNum
     }
-  }
+  },
 
-  function multiplyOperator(e){
-    if (currentOperator !== ""){
-      calculateAnswer()
+  divideOperator: function(e){
+    if (this.currentOperator !== ""){
+      this.calculateAnswer()
     }
-    currentOperator = multiply
+    this.currentOperator = this.divide
     if (currentNum == ""){
-      currentNum = firstNum
+      this.currentNum = firstNum
     }
-  }
+  },
 
-  function divideOperator(e){
-    if (currentOperator !== ""){
-      calculateAnswer()
-    }
-    currentOperator = divide
-    if (currentNum == ""){
-      currentNum = firstNum
-    }
-  }
+  add: function(){
+    this.currentNum = parseFloat(this.currentNum, 10) + parseFloat(this.nextNum, 10)
+    this.nextNum = ""
+    return this.currentNum;
+  },
 
-  function add(){
-    currentNum = parseFloat(currentNum, 10) + parseFloat(nextNum, 10)
-    nextNum = ""
-    return currentNum
-  }
-
-  function subtract(){
+  subtract: function(){
     currentNum = parseFloat(currentNum, 10) - parseFloat(nextNum, 10)
     nextNum = ""
     return currentNum
-  }
+  },
 
-  function multiply(){
+  multiply: function(){
     currentNum = parseFloat(currentNum, 10) * parseFloat(nextNum, 10)
     nextNum = ""
     return currentNum
-  }
+  },
 
-  function divide(){
+  divide: function(){
     currentNum = parseFloat(currentNum, 10) / parseFloat(nextNum, 10)
     nextNum = ""
     return currentNum
-  }
+  },
 
-  function calculateAnswer(){
-    var answer = currentOperator()
-    $("#screen").html(answer)
-  }
-
-
-  function clear(){
-    firstNum = "";
-    nextNum = "";
-    currentNum = "";
-    currentOperator = "";
-    $("#screen").html("0")
-  }
-
-})
+}
+module.exports = calculator

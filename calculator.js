@@ -22,31 +22,31 @@ var calculator = {
 
   subtractOperator: function(e){
     if (this.currentOperator !== ""){
-      this.calculateAnswer()
+      this.calculateAnswer.bind(calculator)();
     }
-    this.currentOperator = this.subtract
+    this.currentOperator = this.subtract.bind(calculator);
     if (this.currentNum == ""){
-      currentNum = firstNum
+      this.currentNum = this.firstNum
     }
   },
 
   multiplyOperator: function(e){
     if (this.currentOperator !== ""){
-      this.calculateAnswer()
+      this.calculateAnswer.bind(calculator)();
     }
-    this.currentOperator = this.multiply
-    if (currentNum == ""){
-      this.currentNum = firstNum
+    this.currentOperator = this.multiply.bind(calculator);
+    if (this.currentNum == ""){
+      this.currentNum = this.firstNum
     }
   },
 
   divideOperator: function(e){
     if (this.currentOperator !== ""){
-      this.calculateAnswer()
+      this.calculateAnswer.bind(calculator)();
     }
-    this.currentOperator = this.divide
-    if (currentNum == ""){
-      this.currentNum = firstNum
+    this.currentOperator = this.divide.bind(calculator);
+    if (this.currentNum == ""){
+      this.currentNum = this.firstNum
     }
   },
 
@@ -57,22 +57,23 @@ var calculator = {
   },
 
   subtract: function(){
-    currentNum = parseFloat(currentNum, 10) - parseFloat(nextNum, 10)
-    nextNum = ""
-    return currentNum
+    this.currentNum = parseFloat(this.currentNum, 10) - parseFloat(this.nextNum, 10)
+    this.nextNum = ""
+    return this.currentNum
   },
 
   multiply: function(){
-    currentNum = parseFloat(currentNum, 10) * parseFloat(nextNum, 10)
-    nextNum = ""
-    return currentNum
+    this.currentNum = parseFloat(this.currentNum, 10) * parseFloat(this.nextNum, 10)
+    this.nextNum = ""
+    return this.currentNum
   },
 
   divide: function(){
-    currentNum = parseFloat(currentNum, 10) / parseFloat(nextNum, 10)
-    nextNum = ""
-    return currentNum
+    this.currentNum = parseFloat(this.currentNum, 10) / parseFloat(this.nextNum, 10)
+    this.nextNum = ""
+    return this.currentNum
   },
 
 }
+
 module.exports = calculator

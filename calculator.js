@@ -5,6 +5,17 @@ var calculator = {
   currentNum: "",
   currentOperator: "",
 
+  numberClick: function(e){
+    if (this.currentNum === ""){
+      this.firstNum += e.currentTarget.id
+      $("#screen").html(this.firstNum)
+    }
+    else {
+      this.nextNum += e.currentTarget.id
+      $("#screen").html(this.nextNum)
+    }
+  },
+
   calculateAnswer: function(){
   var answer = this.currentOperator()
   $("#screen").html(answer)
@@ -72,6 +83,14 @@ var calculator = {
     this.currentNum = parseFloat(this.currentNum, 10) / parseFloat(this.nextNum, 10)
     this.nextNum = ""
     return this.currentNum
+  },
+
+  clear: function(){
+    this.firstNum = "";
+    this.nextNum = "";
+    this.currentNum = "";
+    this.currentOperator = "";
+    $("#screen").html("0")
   },
 
 }

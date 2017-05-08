@@ -5,8 +5,13 @@
 
 #calculator{
   background-color: black;
-  height: 400px;
-  width: 400px;
+  height: 300px;
+  width: 300px;
   text-align: center;
 }
-  
+
+#screen{
+margin-top: 40px;
+color: white;
+font-size: 20px;
+}

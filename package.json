@@ -1,7 +1,7 @@
 {
   "scripts": {
     "test": "mocha",
-    "start": "webpack-dev-server ./calculator_display.js mywebpack.config.js"
+    "start": "webpack-dev-server ./calculator_display.js ./calculator.js ./bundle.js"
   },
   "devDependencies": {
     "webpack": "^2.2.1",

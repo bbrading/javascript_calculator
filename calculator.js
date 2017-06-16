@@ -17,12 +17,15 @@ var calculator = {
   },
 
   calculateAnswer: function(){
-  var answer = this.currentOperator()
-  $("#screen").html(answer)
+    var answer = this.currentOperator()
+    console.log("answer: " + answer)
+    console.log("next num: " + this.nextNum)
+    console.log("current num: " + this.currentNum)
+    $("#screen").html(answer)
   },
 
   addOperator: function(){
-    if (this.currentOperator !== ""){
+    if ((this.currentOperator !== "") && (this.nextNum !== "")){
       this.calculateAnswer.bind(calculator)();
     }
     this.currentOperator = this.add.bind(calculator);
@@ -31,8 +34,8 @@ var calculator = {
     }
   },
 
-  subtractOperator: function(e){
-    if (this.currentOperator !== ""){
+  subtractOperator: function(){
+    if ((this.currentOperator !== "") && (this.nextNum !== "")){
       this.calculateAnswer.bind(calculator)();
     }
     this.currentOperator = this.subtract.bind(calculator);
@@ -41,8 +44,8 @@ var calculator = {
     }
   },
 
-  multiplyOperator: function(e){
-    if (this.currentOperator !== ""){
+  multiplyOperator: function(){
+    if ((this.currentOperator !== "") && (this.nextNum !== "")){
       this.calculateAnswer.bind(calculator)();
     }
     this.currentOperator = this.multiply.bind(calculator);
@@ -51,8 +54,8 @@ var calculator = {
     }
   },
 
-  divideOperator: function(e){
-    if (this.currentOperator !== ""){
+  divideOperator: function(){
+    if ((this.currentOperator !== "") && (this.nextNum !== "")){
       this.calculateAnswer.bind(calculator)();
     }
     this.currentOperator = this.divide.bind(calculator);
